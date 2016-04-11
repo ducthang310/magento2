@@ -17,11 +17,26 @@ class Index extends \Magento\Backend\App\Action
      * @param Context $context
      * @param PageFactory $pageFactory
      */
-    public function __construct(Context $context, PageFactory $pageFactory)
-    {
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Framework\Registry $coreRegistry,
+        \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
+        \Magento\Framework\Reflection\DataObjectProcessor $dataObjectProcessor,
+        \Magento\Framework\View\LayoutFactory $layoutFactory,
+        \Magento\Framework\View\Result\LayoutFactory $resultLayoutFactory,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+    ) {
+        $this->_coreRegistry = $coreRegistry;
+        $this->_fileFactory = $fileFactory;
+        $this->dataObjectProcessor = $dataObjectProcessor;
+        $this->layoutFactory = $layoutFactory;
+        $this->resultLayoutFactory = $resultLayoutFactory;
+        $this->resultPageFactory = $resultPageFactory;
+        $this->resultJsonFactory = $resultJsonFactory;
         parent::__construct($context);
-        $this->pageFactory = $pageFactory;
     }
+
 
     /**
      * Index action
@@ -29,12 +44,13 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        var_dump('fap');die('quay');
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Ashsmith_Blog::post');
-        $resultPage->addBreadcrumb(__('Blog Posts'), __('Blog Posts'));
-        $resultPage->addBreadcrumb(__('Manage Blog Posts'), __('Manage Blog Posts'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Blog Posts'));
+        $resultPage->setActiveMenu('InterSquad::slider');
+        $resultPage->addBreadcrumb(__('Sliders'), __('Sliders'));
+        $resultPage->addBreadcrumb(__('Manage Sliders'), __('Manage Sliders'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Sliders'));
 
         return $resultPage;
     }
@@ -46,6 +62,7 @@ class Index extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
+        var_dump($this->_authorization->isAllowed('InterSquad::slider'));die('xxxx');
         return $this->_authorization->isAllowed('InterSquad::slider');
     }
 

@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="InterSquad_Core::slider" title="Slider Manager" module="InterSquad_Core" sortOrder="10" parent="InterSquad_Core::core" action="isa_slider/index/" resource="InterSquad_Core::slider"/>
+        <add id="InterSquad_Slider::slider" title="Slider Manager" module="InterSquad_Slider" sortOrder="10" parent="InterSquad_Core::core" action="isa_slider/index/" resource="InterSquad_Slider::slider"/>
     </menu>
 </config>
