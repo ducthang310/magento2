@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$slider = $this->getBaseData();
+?>
+
+<div class="is-slider slider-top">
+    <div class="slider-for">
+        <?php foreach ($slider->getImages() as $image): ?>
+            <div>
+                <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>"
+                     title="<?php echo $image['title'] ?>">
+            </div>
+        <?php endforeach; ?>
+    </div>
+<!--    <div class="slider-nav-wrapper">-->
+<!--        <div class="shop-nav">-->
+<!--            <ul class="clear">-->
+<!--                <li id="men">-->
+<!--                    MEN <span class="icons icon-arr-top"></span>-->
+<!--                </li>-->
+<!--                <li id="women" class="active">-->
+<!--                    WOMEN <span class="icons icon-arr-top"></span>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="slider-nav">-->
+<!--            <div>-->
+<!--                <div class="box clear">-->
+<!--                    <ul>-->
+<!--                        <li><a href="">New Arrivals</a></li>-->
+<!--                        <li><a href="">Clothing</a></li>-->
+<!--                        <li><a href="">Accessories</a></li>-->
+<!--                        <li><a href="">Shoes</a></li>-->
+<!--                        <li><a href="">Best Sellers</a></li>-->
+<!--                        <li><a href="">Sales</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <div class="box clear">-->
+<!--                    <ul>-->
+<!--                        <li><a href="">New Arrivals</a></li>-->
+<!--                        <li><a href="">Clothing</a></li>-->
+<!--                        <li><a href="">Accessories</a></li>-->
+<!--                        <li><a href="">Shoes</a></li>-->
+<!--                        <li><a href="">Wedding</a></li>-->
+<!--                        <li><a href="">Essentials</a></li>-->
+<!--                        <li><a href="">Sales</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+<?php
+die('quay len');
+?>

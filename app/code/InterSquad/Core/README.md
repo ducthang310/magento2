@@ -1,0 +1,1 @@
+InterSquad_Core module is an necessary module for using many different modules of InterSquad company.

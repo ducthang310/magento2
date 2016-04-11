@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Test Slider</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="InterSquad\Slider\Block\Slider" name="is_slider.slider_top_home" template="InterSquad_Slider::slider.phtml">
+                <arguments>
+                    <argument name="slider_code" xsi:type="string">sl_homepage_top</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

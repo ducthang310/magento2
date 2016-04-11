@@ -1,0 +1,1 @@
+InterSquad_Slider module provides an managing of sliders on your website. It includes: custom exist sliders or create new slider.
