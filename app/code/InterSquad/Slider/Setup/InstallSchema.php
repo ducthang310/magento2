@@ -55,6 +55,18 @@ class InstallSchema implements InstallSchemaInterface
             [],
             'Slider Images'
         )->addColumn(
+            'addition',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            '2M',
+            [],
+            'Slider Addition'
+        )->addColumn(
+            'custom_css',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            '2M',
+            [],
+            'Slider Customer Css'
+        )->addColumn(
             'creation_time',
             \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
             null,
@@ -75,7 +87,7 @@ class InstallSchema implements InstallSchemaInterface
         )->addIndex(
             $setup->getIdxName(
                 $installer->getTable('is_slider'),
-                ['title', 'identifier', 'content'],
+                ['title', 'identifier', 'images'],
                 AdapterInterface::INDEX_TYPE_FULLTEXT
             ),
             ['title', 'identifier', 'images'],
