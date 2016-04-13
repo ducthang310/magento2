@@ -16,10 +16,18 @@ use Magento\Framework\DataObject\IdentityInterface;
  */
 class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityInterface
 {
+    const SLIDER_ID                = 'slider_id';
+    const IDENTIFIER               = 'identifier';
+    const TITLE                    = 'title';
+    const IMAGES                   = 'images';
+    const CREATION_TIME            = 'creation_time';
+    const UPDATE_TIME              = 'update_time';
+    const IS_ACTIVE                = 'is_active';
+    
     /**
      * No route page id
      */
-    const NOROUTE_PAGE_ID = 'no-route';
+    const NOROUTE_SLIDER_ID = 'no-route';
 
     /**#@+
      * Page's Statuses
@@ -77,30 +85,7 @@ class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityI
      */
     public function noRoutePage()
     {
-        return $this->load(self::NOROUTE_PAGE_ID, $this->getIdFieldName());
-    }
-
-    /**
-     * Receive page store ids
-     *
-     * @return int[]
-     */
-    public function getStores()
-    {
-        return $this->hasData('stores') ? $this->getData('stores') : $this->getData('store_id');
-    }
-
-    /**
-     * Check if page identifier exist for specific store
-     * return page id if page exists
-     *
-     * @param string $identifier
-     * @param int $storeId
-     * @return int
-     */
-    public function checkIdentifier($identifier, $storeId)
-    {
-        return $this->_getResource()->checkIdentifier($identifier, $storeId);
+        return $this->load(self::NOROUTE_SLIDER_ID, $this->getIdFieldName());
     }
 
     /**
@@ -131,7 +116,7 @@ class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityI
      */
     public function getId()
     {
-        return parent::getData(self::PAGE_ID);
+        return parent::getData(self::SLIDER_ID);
     }
 
     /**
@@ -185,16 +170,6 @@ class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityI
     }
 
     /**
-     * Get sort order
-     *
-     * @return string
-     */
-    public function getSortOrder()
-    {
-        return $this->getData(self::SORT_ORDER);
-    }
-
-    /**
      * Is active
      *
      * @return bool
@@ -207,12 +182,10 @@ class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityI
     /**
      * Set ID
      *
-     * @param int $id
-     * @return \InterSquad\Slider\Api\Data\PageInterface
      */
     public function setId($id)
     {
-        return $this->setData(self::PAGE_ID, $id);
+        return $this->setData(self::SLIDER_ID, $id);
     }
 
     /**
@@ -235,6 +208,17 @@ class Slider extends \Magento\Framework\Model\AbstractModel implements IdentityI
     public function setTitle($title)
     {
         return $this->setData(self::TITLE, $title);
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return \InterSquad\Slider\Api\Data\PageInterface
+     */
+    public function setImages($images)
+    {
+        return $this->setData(self::IMAGES, $images);
     }
 
     /**

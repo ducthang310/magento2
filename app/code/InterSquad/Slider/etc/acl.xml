@@ -11,7 +11,7 @@
             <resource id="Magento_Backend::admin" title="Magento Admin" sortOrder="20">
                 <resource id="Magento_Backend::content" title="Content" sortOrder="60">
                     <resource id="InterSquad_Core::core" title="InterSquad" sortOrder="20">
-                        <resource id="InterSquad_Core::slider" title="Widgets" sortOrder="10" />
+                        <resource id="InterSquad_Slider::slider" title="Slider" sortOrder="10" />
                     </resource>
                 </resource>
             </resource>

@@ -19,8 +19,8 @@ use Magento\Framework\UrlInterface;
 class SliderActions extends Column
 {
     /** Url path */
-    const SLIDER_URL_PATH_EDIT = 'slider/index/edit';
-    const SLIDER_URL_PATH_DELETE = 'slider/index/delete';
+    const SLIDER_URL_PATH_EDIT = 'isa_slider/index/edit';
+    const SLIDER_URL_PATH_DELETE = 'isa_slider/index/delete';
 
     /** @var UrlBuilder */
     protected $actionUrlBuilder;
@@ -80,16 +80,6 @@ class SliderActions extends Column
                             'title' => __('Delete ${ $.$data.title }'),
                             'message' => __('Are you sure you wan\'t to delete a ${ $.$data.title } record?')
                         ]
-                    ];
-                }
-                if (isset($item['identifier'])) {
-                    $item[$name]['preview'] = [
-                        'href' => $this->actionUrlBuilder->getUrl(
-                            $item['identifier'],
-                            isset($item['_first_store_id']) ? $item['_first_store_id'] : null,
-                            isset($item['store_code']) ? $item['store_code'] : null
-                        ),
-                        'label' => __('Preview')
                     ];
                 }
             }

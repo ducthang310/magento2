@@ -1,56 +1,33 @@
 <?php
-/**
- *
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
-namespace InterSquad\Slider\Controller\Adminhtml\Page;
-
-use Magento\Backend\App\Action\Context;
+namespace InterSquad\Slider\Controller\Index;
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Action\Context;
 
-class Index extends \Magento\Backend\App\Action
+class Index extends \Magento\Framework\App\Action\Action
 {
     /**
      * @var PageFactory
      */
-    protected $resultPageFactory;
+    protected $pageFactory;
 
     /**
+     * Index constructor.
      * @param Context $context
-     * @param PageFactory $resultPageFactory
+     * @param PageFactory $pageFactory
      */
-    public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory
-    ) {
-        parent::__construct($context);
-        $this->resultPageFactory = $resultPageFactory;
-    }
-    /**
-     * Check the permission to run it
-     *
-     * @return bool
-     */
-    protected function _isAllowed()
+    public function __construct(Context $context, PageFactory $pageFactory)
     {
-        return $this->_authorization->isAllowed('InterSquad_Slider::slider');
+        $this->pageFactory = $pageFactory;
+        return parent::__construct($context);
     }
 
     /**
      * Index action
-     *
-     * @return \Magento\Backend\Model\View\Result\Page
+     * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('InterSquad_Slider::slider');
-        $resultPage->addBreadcrumb(__('Slider'), __('Slider'));
-        $resultPage->addBreadcrumb(__('Manage Sliders'), __('Manage Sliders'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Sliders'));
-
-        return $resultPage;
+        $page_object = $this->pageFactory->create();;
+        return $page_object;
     }
 }

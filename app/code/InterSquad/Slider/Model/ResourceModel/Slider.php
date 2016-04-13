@@ -14,20 +14,6 @@ namespace InterSquad\Slider\Model\ResourceModel;
 class Slider extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
-     * Store model
-     *
-     * @var null|\Magento\Store\Model\Store
-     */
-    protected $_store = null;
-
-    /**
-     * Store manager
-     *
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
      * @var \Magento\Framework\Stdlib\DateTime
      */
     protected $dateTime;
@@ -36,18 +22,15 @@ class Slider extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * Construct
      *
      * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\Stdlib\DateTime $dateTime
      * @param string $connectionName
      */
     public function __construct(
         \Magento\Framework\Model\ResourceModel\Db\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Stdlib\DateTime $dateTime,
         $connectionName = null
     ) {
         parent::__construct($context, $connectionName);
-        $this->_storeManager = $storeManager;
         $this->dateTime = $dateTime;
     }
 

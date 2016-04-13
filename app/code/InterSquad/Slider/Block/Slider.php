@@ -20,55 +20,47 @@ class Slider extends Template
      * @param Template\Context $context
      * @param array $data
      */
-    public function __construct(Template\Context $context, array $data = [])
+    public function __construct(
+        Template\Context $context,
+        array $data = [])
     {
         parent::__construct($context, $data);
         $this->_isScopePrivate = true;
-        $this->getBaseData($data['slider_code']);
+        $this->loadData($data['slider_code']);
     }
 
     /**
      * @return DataObject
      */
-    public function getBaseData()
+    public function loadData($identifier)
     {
         if (!$this->_baseData) {
             // Call model to get data by slider_code
             $data = new DataObject();
-            $data->_data = array(
-                'slider_id' => 1,
-                'code' => 'sl_homepage_top',
-                'status' => 1,
-                'images' => array(
-                    array(
-                        'url' => 'images/fap1.jpg',
-                        'title' => 'Image 1',
-                        'alt' => 'Image 1',
-                        'position' => 2
-                    ),
-                    array(
-                        'url' => 'images/fap2.jpg',
-                        'title' => 'Image 2',
-                        'alt' => 'Image 2',
-                        'position' => 1
-                    ),
-                    array(
-                        'url' => 'images/fap3.jpg',
-                        'title' => 'Image 3',
-                        'alt' => 'Image 3',
-                        'position' => 0
-                    )
-                ),
-                'addition' => '',
-                'custom_css' => '.slider_home_top {width: 100%; background-color: #444333;}',
-                'custom_js' => 'alert("Your custom js has been added successfully.")'
-            );
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $model = $objectManager->create('InterSquad\Slider\Model\Slider');
+            $model->load($identifier, 'identifier');
+            if ($model) {
+                $data->_data = array(
+                    'slider_id' => $model->getSliderId(),
+                    'code' => $model->getIdentifier(),
+                    'status' => 1,
+                    'images' => unserialize($model->getImages()),
+                    'addition' => '',
+                    'custom_css' => '.slider_home_top {width: 100%; background-color: #444333;}',
+                    'custom_js' => 'alert("Your custom js has been added successfully.")'
+                );
 
-            $data->setImages($this->_prepareImageData($data->getImages()));
+                $data->setImages($this->_prepareImageData($data->getImages()));
+            }
                 
             $this->_baseData = $data;
         }
 
+        return $this->_baseData;
+    }
+
+    public function getBaseData() {
         return $this->_baseData;
     }
 
